@@ -1,0 +1,24 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <mat-form-field>
+      <input matInput placeholder="Nombres" required formControlName="nombres">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Apellidos" required formControlName="apellidos">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="DNI" required formControlName="dni" type="number">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Dirección" required formControlName="direccion">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Teléfono" required formControlName="telefono" type="number">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Aceptar</button>
+    <button mat-raised-button color="accent" (click)="cancelar()" type="button" >Cancelar</button>
+  </form>
+</div>

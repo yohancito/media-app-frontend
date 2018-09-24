@@ -1,0 +1,35 @@
+.container-50 {
+    display: contents;
+    flex-direction: column;
+}
+
+.container-50 > * {
+    width: 50%;
+}
+
+.container-45 {
+    display: contents;
+    flex-direction: column;
+}
+
+.container-45 > * {
+    width: 45%;
+}
+
+.container-40 {
+    display: contents;
+    flex-direction: column;
+}
+
+.container-40 > * {
+    width: 40%;
+}
+
+.container-10 {
+    display: contents;
+    flex-direction: column;
+}
+
+.container-10 > * {
+    width: 10%;
+}

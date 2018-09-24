@@ -1,0 +1,34 @@
+<mat-card>Ingrese Datos de Menu</mat-card>
+
+<br />
+
+<form class="example-container" [formGroup]="form" (ngSubmit)="save()" #f="ngForm">
+
+  <div [hidden]="true">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="ID" formControlName="idMenu">
+    </mat-form-field>
+  </div>    
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Nombre" required formControlName="nombre" maxlength="20">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Icono" required formControlName="icono" >
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Url" required formControlName="url">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="f.invalid">
+    <mat-icon>done</mat-icon>
+    <span>Aceptar</span>
+  </button>
+  <button mat-raised-button color="accent" routerLink='/menu' type="button">
+    <mat-icon>close</mat-icon>
+    <span>Cancelar</span>
+  </button>
+</form>
+
+<br />

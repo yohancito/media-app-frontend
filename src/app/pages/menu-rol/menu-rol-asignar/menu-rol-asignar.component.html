@@ -1,0 +1,81 @@
+<mat-card>Asignar Roles a Menu</mat-card>
+<br />
+<form [formGroup]="form" (ngSubmit)="save()" #f="ngForm">
+  <div [hidden]="true">
+    <mat-form-field>
+      <input matInput placeholder="ID" formControlName="idMenu">
+    </mat-form-field>
+  </div>
+
+  <div class="container-45">
+    <mat-form-field>
+      <input matInput placeholder="Denominacion Menu " formControlName="nombre">
+    </mat-form-field>
+  </div>
+  <div class="container-45">
+    <mat-form-field>
+      <mat-select placeholder="Roles" formControlName="rol" (selectionChange)="changeRol($event.value)">
+        <mat-option *ngFor="let p of allRoles" [value]="p">
+          {{ p.nombre }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="container-10">
+    <button mat-raised-button color="primary" type="button" (click)="agregar()">
+      <mat-icon>add</mat-icon>
+      <span>Agregar</span>
+    </button>
+  </div>
+
+  <div fxLayout="row" fxLayout.xs="column">
+    <mat-card fxFlex="50%;" fxFlex.xs="50%">
+      <mat-card-content>
+        <mat-list>
+          <h3 mat-subheader>Roles Actuales</h3>
+          <mat-list-item *ngFor="let p of rolesActuales">
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <h4 mat-line>{{p.nombre}}</h4>
+            <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="50%;" fxFlex.xs="50%">
+      <mat-card-content>
+        <mat-list formArrayName="roles">
+          <h3 mat-subheader>Nuevos Roles</h3>
+          <ng-template ngFor let-item [ngForOf]="roles.controls" let-i="index">
+            <mat-list-item [formGroupName]="i">
+              <mat-icon mat-list-icon>folder</mat-icon>
+              <div mat-line>
+                {{roles.value[i].nombre}}
+              </div>
+              <button mat-icon-button color="error" (click)="removeDetalleFormControl(i)">
+                <mat-icon>clear</mat-icon>
+              </button>
+              <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+            </mat-list-item>
+          </ng-template>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+  <div class="container-50">
+    <button mat-raised-button color="primary" type="submit" [disabled]="f.invalid">
+      <mat-icon>done</mat-icon>
+      <span>Aceptar</span>
+    </button>
+  </div>
+  <div class="container-50">
+    <button mat-raised-button color="accent" routerLink='/menu-rol' type="button">
+      <mat-icon>close</mat-icon>
+      <span>Cancelar</span>
+    </button>
+  </div>
+</form>
+
+<br />
